@@ -1,0 +1,33 @@
+-- Create a store database
+
+CREATE TABLE clothing (id INTEGER PRIMARY KEY, name TEXT, color TEXT, price INTEGER, style TEXT);
+
+INSERT INTO clothing VALUES (1, "classic tee", "white", 19.99, "tops");
+INSERT INTO clothing VALUES (2, "classic tank", "white", 15.99, "tops");
+INSERT INTO clothing VALUES (3, "4in shorts", "black", 20.99, "bottoms");
+INSERT INTO clothing VALUES (4, "6in shorts", "black", 20.99, "bottoms");
+INSERT INTO clothing VALUES (5, "8in shorts", "black", 22.99, "bottoms");
+INSERT INTO clothing VALUES (6, "crew socks", "white", 8.99, "accessories");
+INSERT INTO clothing VALUES (7, "biker shorts", "black", 20.99, "bottoms");
+INSERT INTO clothing VALUES (8, "leggings", "black", 35.00, "bottoms");
+INSERT INTO clothing VALUES (9, "joggers", "black", 39.99, "bottoms");
+INSERT INTO clothing VALUES (10, "crewneck", "white", 40.00, "outerwear");
+INSERT INTO clothing VALUES (11, "hoodie", "black", 42.99, "outerwear");
+INSERT INTO clothing VALUES (12, "classic long sleeve", "black", 23.00, "tops");
+INSERT INTO clothing VALUES (13, "sweater", "white", 39.99, "tops");
+INSERT INTO clothing VALUES (14, "boxers", "white", 10.99, "accessories");
+INSERT INTO clothing VALUES (15, "trucker hat", "black", 11.50, "accessories");
+
+-- display the database ordered by price.
+SELECT * FROM clothing 
+ORDER BY price desc;
+
+-- what is the average price of "Bottoms"?
+SELECT AVG(price) "avg bottom price"
+FROM clothing
+WHERE style="bottoms";
+
+-- display all items that are white. 
+SELECT name, color, price 
+FROM clothing 
+WHERE color="white";
