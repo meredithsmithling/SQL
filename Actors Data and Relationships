@@ -1,0 +1,65 @@
+CREATE TABLE actors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER);
+    
+INSERT INTO actors (fullname, age) VALUES ("Ryan Gosling", "42");
+INSERT INTO actors (fullname, age) VALUES ("Will Ferrell", "56");
+INSERT INTO actors (fullname, age) VALUES ("Will Arnett", "53");
+INSERT INTO actors (fullname, age) VALUES ("Tom Holland", "27");
+INSERT INTO actors (fullname, age) VALUES ("Matt Damon", "52"); 
+INSERT INTO actors (fullname, age) VALUES ("Ben Affleck", "51");
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    actors_id INTEGER,
+    title TEXT);
+
+    
+INSERT INTO movies (actors_id, title) VALUES ("1", "Barbie");
+INSERT INTO movies (actors_id, title) VALUES ("1", "La La Land");
+INSERT INTO movies (actors_id, title) VALUES ("1", "The Big Short");
+INSERT INTO movies (actors_id, title)
+VALUES ("2", "Step Brothers");
+INSERT INTO movies (actors_id, title) VALUES ("2", "Blades Of Glory");
+INSERT INTO movies (actors_id, title) VALUES ("2", "The Other Guys");
+INSERT INTO movies (actors_id, title) VALUES ("3", "Lego Batman");
+INSERT INTO movies (actors_id, title) VALUES ("3", "Blades Of Glory");
+INSERT INTO movies (actors_id, title) VALUES ("3", "Monsters VS Aliens");
+INSERT INTO movies (actors_id, title) VALUES ("4", "Spider Man");
+INSERT INTO movies (actors_id, title) VALUES ("4", "Uncharted");
+INSERT INTO movies (actors_id, title) VALUES ("4", "Onward");
+INSERT INTO movies (actors_id, title) VALUES ("5", "Oppenheimer");
+INSERT INTO movies (actors_id, title) VALUES ("5", "The Martian");
+INSERT INTO movies (actors_id, title) VALUES ("5", "Interstellar");
+INSERT INTO movies (actors_id, title) VALUES ("6", "Batman V Superman");
+INSERT INTO movies (actors_id, title) VALUES ("6", "Gone Girl");
+INSERT INTO movies (actors_id, title) VALUES ("6", "Air");
+
+CREATE TABLE coworkers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    actor1_id INTEGER,
+    actor2_id INTEGER);
+    
+INSERT INTO coworkers (actor1_id, actor2_id) VALUES ("1", "2");
+INSERT INTO coworkers (actor1_id, actor2_id) VALUES ("2", "3"); 
+INSERT INTO coworkers (actor1_id, actor2_id) VALUES ("5", "6"); 
+
+-- what movies are these actors in?
+SELECT actors.fullname, movies.title
+FROM actors
+JOIN movies
+ON actors.id = movies.actors_id;
+
+-- which actors have been coworkers before?
+SELECT a.fullname, b.fullname
+FROM coworkers
+JOIN actors a
+ON a.id = coworkers.actor1_id
+JOIN actors b
+ON b.id = coworkers.actor2_id; 
+
+-- which actors are between the ages of 50 and 55?
+SELECT fullname
+FROM actors
+WHERE age BETWEEN 50 AND 55;
